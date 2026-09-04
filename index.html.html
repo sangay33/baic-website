@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhutan Accessibility & Inclusion Consultancy (BAIC) | Official Portal</title>
+    <!-- Font Awesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0f2c59;
+            --secondary-blue: #1d5d9b;
+            --accent-gold: #d97706;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #475569;
+            --focus-ring: #2563eb;
+            --border-radius: 12px;
+            --transition: all 0.25s ease-in-out;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Accessibility Focus Indicator */
+        a:focus, button:focus {
+            outline: 3px solid var(--focus-ring);
+            outline-offset: 3px;
+        }
+
+        /* Sticky Navigation Bar */
+        nav {
+            background: var(--card-bg);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--primary-blue);
+        }
+
+        .brand-text h1 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .brand-text span {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-blue);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero / Homepage Banner */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: #ffffff;
+            padding: 60px 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            line-height: 1.25;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .cta-btn:hover {
+            background-color: #b45309;
+            transform: translateY(-2px);
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            border-bottom: 3px solid var(--secondary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Mission & Vision Grid */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .mv-card {
+            background: var(--card-bg);
+            padding: 28px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e2e8f0;
+            border-top: 5px solid var(--secondary-blue);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .mv-card.vision {
+            border-top-color: var(--accent-gold);
+        }
+
+        .mv-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mv-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        /* About Us Section */
+        .about-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e2e8f0;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        .core-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .pillar-item {
+            background: #f1f5f9;
+            padding: 18px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .pillar-item i {
+            font-size: 1.8rem;
+            color: var(--secondary-blue);
+            margin-bottom: 8px;
+        }
+
+        .pillar-item h4 {
+            color: var(--primary-blue);
+            font-size: 0.95rem;
+        }
+
+        /* Standard Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .meta-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--secondary-blue);
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+            color: var(--primary-blue);
+        }
+
+        /* Announcement Highlight Banner */
+        .announcement-banner {
+            background-color: #eff6ff;
+            border-left: 5px solid var(--secondary-blue);
+            padding: 24px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .announcement-banner h3 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .announcement-banner p {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-size: 0.98rem;
+        }
+
+        /* Social Media Grid */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            padding: 18px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            transition: var(--transition);
+        }
+
+        .social-card i {
+            font-size: 1.8rem;
+            color: var(--secondary-blue);
+        }
+
+        .social-card:hover {
+            border-color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        footer {
+            background: var(--primary-blue);
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .hero h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar with SVG Emblem Logo -->
+    <nav role="navigation" aria-label="Main Navigation">
+        <div class="nav-container">
+            <a href="#home" class="brand">
+                <svg width="46" height="46" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="BAIC Emblem Logo">
+                    <circle cx="50" cy="50" r="46" fill="#0F2C59" stroke="#D97706" stroke-width="3"/>
+                    <path d="M50 20 C35 20, 25 35, 35 50 C45 65, 55 65, 65 50 C75 35, 65 20, 50 20 Z" stroke="#FFFFFF" stroke-width="4" fill="none"/>
+                    <path d="M50 80 C65 80, 75 65, 65 50 C55 35, 45 35, 35 50 C25 65, 35 80, 50 80 Z" stroke="#D97706" stroke-width="4" fill="none"/>
+                    <circle cx="50" cy="50" r="8" fill="#FFFFFF"/>
+                </svg>
+                <div class="brand-text">
+                    <h1>BAIC BHUTAN</h1>
+                    <span>ACCESSIBILITY & INCLUSION CONSULTANCY</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#mission-vision">Mission & Vision</a></li>
+                <li><a href="#donors">Donors & Partners</a></li>
+                <li><a href="#updates">News & Research</a></li>
+                <li><a href="#social">Social Media</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero Banner -->
+        <header id="home" class="hero" role="banner">
+            <h2>Building a Barrier-Free & Inclusive Bhutan</h2>
+            <p>Advancing universal accessibility, assistive technology integration, and rights-based inclusion across public, digital, and social sectors in Bhutan.</p>
+            <a href="#about" class="cta-btn">Explore Our Initiatives</a>
+        </header>
+
+        <main role="main">
+
+            <!-- Mission & Vision Section -->
+            <section id="mission-vision" aria-labelledby="mv-heading">
+                <div class="section-header">
+                    <h2 id="mv-heading"><i class="fa-solid fa-compass" aria-hidden="true"></i> Strategic Guidance</h2>
+                </div>
+                <div class="mv-grid">
+                    <div class="mv-card">
+                        <h3><i class="fa-solid fa-bullseye" aria-hidden="true"></i> Our Mission</h3>
+                        <p>To eliminate physical, digital, and attitudinal barriers across Bhutan by providing expert accessibility auditing, policy advocacy, community training, and cost-effective assistive technology deployment in line with the Gross National Happiness framework.</p>
+                    </div>
+                    <div class="mv-card vision">
+                        <h3><i class="fa-solid fa-eye" aria-hidden="true"></i> Our Vision</h3>
+                        <p>An inclusive Bhutanese society where individuals of all abilities enjoy equal rights, dignified independence, seamless participation in community life, and unhindered access to public infrastructure and digital services.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Us Section -->
+            <section id="about" aria-labelledby="about-heading">
+                <div class="section-header">
+                    <h2 id="about-heading"><i class="fa-solid fa-building-user" aria-hidden="true"></i> About BAIC</h2>
+                </div>
+                <div class="about-content">
+                    <p>The <strong>Bhutan Accessibility and Inclusion Consultancy (BAIC)</strong> is a specialized consultancy firm established to support government bodies, civil society organizations, educational institutions, and international partners in building inclusive environments for persons with disabilities in Bhutan.</p>
+                    
+                    <p>Rooted in national values of social harmony and compassion, BAIC bridges international accessibility standards (such as WCAG 2.2 and Universal Design Principles) with localized solution-building tailored to Bhutan's unique topography and infrastructure.</p>
+
+                    <h3 style="color: var(--primary-blue); margin-top: 25px;">Core Areas of Expertise</h3>
+                    <div class="core-pillars">
+                        <div class="pillar-item">
+                            <i class="fa-solid fa-wheelchair" aria-hidden="true"></i>
+                            <h4>Infrastructure Auditing</h4>
+                        </div>
+                        <div class="pillar-item">
+                            <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
+                            <h4>Digital & Web Inclusion</h4>
+                        </div>
+                        <div class="pillar-item">
+                            <i class="fa-solid fa-hands-holding-child" aria-hidden="true"></i>
+                            <h4>Assistive Technology</h4>
+                        </div>
+                        <div class="pillar-item">
+                            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                            <h4>Policy & Training</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- International Organizations & Donors Forum -->
+            <section id="donors" aria-labelledby="donors-heading">
+                <div class="section-header">
+                    <h2 id="donors-heading"><i class="fa-solid fa-globe" aria-hidden="true"></i> International Organizations & Donors Forum</h2>
+                </div>
+                <div class="content-grid">
+
+                    <div class="card">
+                        <div>
+                            <h3>UNDP Bhutan</h3>
+                            <p>Partnering on sustainable development goals, community empowerment, and social inclusion initiatives across Bhutan.</p>
+                        </div>
+                        <a href="https://www.undp.org/bhutan" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Visit UNDP Portal <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                            <h3>UNICEF Bhutan</h3>
+                            <p>Supporting inclusive education, child protection, and accessible community infrastructure for children of all abilities.</p>
+                        </div>
+                        <a href="https://www.unicef.org/bhutan/" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Visit UNICEF Portal <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                            <h3>Torchit Innovation Partner</h3>
+                            <p>Collaborating on sensor-based assistive devices and smart white canes for the visually impaired in Bhutan.</p>
+                        </div>
+                        <a href="https://www.torchit.in" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Explore Assistive Tech <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                            <h3>Asian Development Bank (ADB)</h3>
+                            <p>Funding regional accessibility infrastructure, capacity building, and economic integration programs.</p>
+                        </div>
+                        <a href="https://www.adb.org/countries/bhutan/main" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Visit ADB Portal <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Research Updates, Articles & Announcements -->
+            <section id="updates" aria-labelledby="updates-heading">
+                <div class="section-header">
+                    <h2 id="updates-heading"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> News, Research & Publications</h2>
+                </div>
+
+                <!-- Featured Announcement Banner -->
+                <div class="announcement-banner">
+                    <span class="meta-tag">Featured Announcement</span>
+                    <h3>National Assistive Technology Workshop 2026</h3>
+                    <p>BAIC will be hosting a nationwide orientation on integrating smart mobility devices and screen-reading technologies for educational institutions.</p>
+                    <a href="#" class="card-link">Read Full Announcement <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Research Card -->
+                    <div class="card">
+                        <div>
+                            <span class="meta-tag">Research Update</span>
+                            <h3>Dzongkha Screen Reader Optimization</h3>
+                            <p>Ongoing developmental field tests examining screen reader integration and voice technology for native Dzongkha text.</p>
+                        </div>
+                        <a href="#" class="card-link">Explore Research Progress <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+
+                    <!-- Article Card -->
+                    <div class="card">
+                        <div>
+                            <span class="meta-tag">Publication</span>
+                            <h3>Inclusive Education in Bhutan: Pathways Forward</h3>
+                            <p>A comprehensive study on adaptive teaching strategies and classroom inclusion for students with diverse needs.</p>
+                        </div>
+                        <a href="#" class="card-link">Download PDF Publication <i class="fa-solid fa-file-pdf" aria-hidden="true"></i></a>
+                    </div>
+
+                    <!-- Field Assessment -->
+                    <div class="card">
+                        <div>
+                            <span class="meta-tag">Field Survey</span>
+                            <h3>Infrastructure Accessibility Assessment</h3>
+                            <p>Data collection and barrier identification in public schools and community centers across western districts.</p>
+                        </div>
+                        <a href="#" class="card-link">Access Survey Findings <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Official Social Media Links -->
+            <section id="social" aria-labelledby="social-heading">
+                <div class="section-header">
+                    <h2 id="social-heading"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Official Social Media Channels</h2>
+                </div>
+                <div class="social-grid">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                        <span>Facebook Page</span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                        <span>LinkedIn Network</span>
+                    </a>
+                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                        <span>X (Twitter)</span>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card">
+                        <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                        <span>YouTube Channel</span>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p>&copy; 2026 Bhutan Accessibility and Inclusion Consultancy (BAIC). All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
